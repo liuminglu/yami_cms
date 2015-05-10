@@ -12,7 +12,8 @@ public class UserAction extends BaseAction<UserModel> {
 		System.out.println(user.getUserName());
 		System.out.println(user.getPassword());
 		System.out.println(model.getModelId());
-		return null;
+		model.setUserName(user.getUserName());
+		return "toWelcome";
 	}
 
 }
