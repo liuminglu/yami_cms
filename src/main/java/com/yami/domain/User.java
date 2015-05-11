@@ -1,8 +1,8 @@
-package com.yami.dto;
+package com.yami.domain;
 
 import com.yami.annotation.PrimaryKey;
 
-public class User extends BaseDto {
+public class User extends BaseDomain {
 	
 	private static final long serialVersionUID = 1L;
 

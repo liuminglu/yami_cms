@@ -1,9 +1,9 @@
 package com.yami.action.user;
 
 import com.yami.action.BaseAction;
-import com.yami.dto.User;
+import com.yami.domain.User;
 
-public class UserAction extends BaseAction<UserModel> {
+public class UserAction extends BaseAction<UserDto> {
 
 	private static final long serialVersionUID = 1L;
 	

@@ -7,7 +7,7 @@ import org.springframework.util.Assert;
 
 import com.yami.annotation.PrimaryKey;
 
-public class DTOUtil {
+public class DomainUtil {
 
 	/**
 	 * 根据注解寻找Entity主键并通过反射赋值一个随机生成的32位的字符串

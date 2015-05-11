@@ -3,7 +3,7 @@ package com.yami.service.impl;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
-import com.yami.dto.User;
+import com.yami.domain.User;
 import com.yami.mapper.UserMapper;
 import com.yami.service.UserService;
 

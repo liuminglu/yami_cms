@@ -6,7 +6,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.yami.dto.User;
+import com.yami.domain.User;
 import com.yami.service.UserService;
 
 public class UserServiceImplTest {
