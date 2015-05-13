@@ -1,6 +1,6 @@
 package com.yami.service;
 
-import com.yami.dto.User;
+import com.yami.domain.User;
 
 public interface UserService {
 	
@@ -8,5 +8,5 @@ public interface UserService {
 	
 	User getUserByUserId(String userId);
 	
-	int insertUser(User user);
+	long insertUser(User user);
 }

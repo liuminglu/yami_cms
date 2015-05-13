@@ -2,7 +2,7 @@ package com.yami.aop;
 
 import org.aspectj.lang.JoinPoint;
 
-import com.yami.util.DTOUtil;
+import com.yami.util.DomainUtil;
 
 public class InertAspect {
 	
@@ -16,7 +16,7 @@ public class InertAspect {
 		// 得到被拦截方法参数
 		Object[] args = joinPoint.getArgs();
 		if (args != null && args.length > 0) {
-			DTOUtil.primaryKeyValueGenerator(args[0]);
+			DomainUtil.primaryKeyValueGenerator(args[0]);
 		}
 		// 得到被拦截方法名
 		// System.out.println(joinPoint.getSignature().getName());

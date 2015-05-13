@@ -3,7 +3,7 @@
 <struts>
 	<package name="user" extends="struts-default" >
 		<action name="user.*" class="com.yami.action.user.UserAction" method="{1}">
-			<result type="freemarker" name="toWelcome">/welcome.html</result>
+			<result type="freemarker" name="toWelcome">/index.html</result>
 		</action>
 	</package>
 </struts>

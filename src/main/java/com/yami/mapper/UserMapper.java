@@ -1,6 +1,6 @@
 package com.yami.mapper;
 
-import com.yami.dto.User;
+import com.yami.domain.User;
 
 
 public interface UserMapper {

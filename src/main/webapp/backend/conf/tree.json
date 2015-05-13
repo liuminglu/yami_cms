@@ -1,0 +1,14 @@
+[
+  {
+  "id": 1,
+  "text": "审核管理",
+  "state": "closed",
+  "children": [{
+    "id": 11,
+    "text": "商户审核",
+    "attributes":{
+      "url":"page/merchant/list.html"
+    }
+  }]
+}
+]
