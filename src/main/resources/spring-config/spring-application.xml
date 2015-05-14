@@ -65,7 +65,7 @@
 
 	<!-- 配置aspect切面类 -->
 	<tx:annotation-driven transaction-manager="transactionManager"
-		proxy-target-class="true" />
+															  proxy-target-class="true" />
 
 	<!-- 配置事务切面Bean,指定事务管理器 -->
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">

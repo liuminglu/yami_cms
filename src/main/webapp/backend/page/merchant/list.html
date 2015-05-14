@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../../lib/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../lib/themes/icon.css">
+    <script type="text/javascript" src="../../lib/jquery.min.js"></script>
+    <script type="text/javascript" src="../../lib/jquery.easyui.min.js"></script>
+
+    <script type="text/javascript" src="../../index.js"></script>
+
+    <title>商户列表</title>
+</head>
+<body>
+<table id="merchantGrid" title="商户审核" class="easyui-datagrid" style="1000px;800px"
+       url="/merchant.unCheckedMerchants.do"
+       toolbar="#toolbar"
+       method='POST'
+       page="1"
+       pageSize="20"
+       rownumbers="true" fitColumns="true" singleSelect="true"  pagination="true">
+    <thead>
+    <tr>
+        <th field="id" width="50">ID</th>
+        <th field="name" width="100">name</th>
+        <th field="address" width="100">address</th>
+        <th field="description" width="100">description</th>
+        <th field="tags" width="100">tags</th>
+        <th field="goodCuisine" width="100">goodCuisine</th>
+    </tr>
+    </thead>
+</table>
+<div id="toolbar">
+    <a href="#" class="easyui-linkbutton" iconCls="icon-ok" plain="true" onclick="passMerchant()"> 审核通过</a>
+    <a href="#" class="easyui-linkbutton" iconCls="icon-no" plain="true" onclick="rejectMerchant()">审核拒接</a>
+</div>
+<div id="dlg" closed="true" class="easyui-dialog" title="Basic Dialog" data-options="iconCls:'icon-ok'" style="width:400px;height:200px;padding:10px">
+    操作成功！
+</div>
+<script type="text/javascript" src="list.js"></script>
+</body>
+</html>

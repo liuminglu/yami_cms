@@ -1,49 +1,161 @@
 package com.yami.domain;
 
-import com.yami.annotation.PrimaryKey;
+import java.util.Date;
 
+/**
+ * Created by Johnson on 2015/4/22.
+ */
 public class User extends BaseDomain {
-	
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = -3383759896372171236L;
+    private Long id;
+    private String username;
+    private Integer type = 0;//0 客户端用户 ,1 商户
+    private boolean firstPay;
+    private String headPic;
+    private String nickName;
+    private Integer gender;
+    private String password;
+    private String payPassword;
+    private String description;
+    private Date registerDate;
+    private Integer status;
+    private String city;
+    private String region;
+    private String bindingPhone;
 
-	@PrimaryKey
-	private int userId;
-	
-	private String userName;
-	
-	private String password;
-	
-	private int firstPay = 0;
+    public User() {
+    }
 
-	public String getUserName() {
-		return userName;
-	}
+    public User(String userName, String password) {
+        this.username = userName;
+        this.password = password;
+    }
 
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
+    public User(String username, String headPic, Integer gender, String region, String description){
+        this.username = username;
+        this.headPic = headPic;
+        this.gender = gender;
+        this.region = region;
+        this.description = description;
+    }
 
-	public String getPassword() {
-		return password;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public int getFirstPay() {
-		return firstPay;
-	}
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
-	public void setFirstPay(int firstPay) {
-		this.firstPay = firstPay;
-	}
+    public Integer getType() {
+        return type;
+    }
 
-	public int getUserId() {
-		return userId;
-	}
+    public void setType(Integer type) {
+        this.type = type;
+    }
 
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
+    public boolean isFirstPay() {
+        return firstPay;
+    }
+
+    public void setFirstPay(boolean firstPay) {
+        this.firstPay = firstPay;
+    }
+
+    public String getHeadPic() {
+        return headPic;
+    }
+
+    public void setHeadPic(String headPic) {
+        this.headPic = headPic;
+    }
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
+
+    public Integer getGender() {
+        return gender;
+    }
+
+    public void setGender(Integer gender) {
+        this.gender = gender;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getPayPassword() {
+        return payPassword;
+    }
+
+    public void setPayPassword(String payPassword) {
+        this.payPassword = payPassword;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Date getRegisterDate() {
+        return registerDate;
+    }
+
+    public void setRegisterDate(Date registerDate) {
+        this.registerDate = registerDate;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
+    }
+
+    public String getBindingPhone() {
+        return bindingPhone;
+    }
+
+    public void setBindingPhone(String bindingPhone) {
+        this.bindingPhone = bindingPhone;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
 }

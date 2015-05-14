@@ -22,14 +22,14 @@ public class UserServiceImplTest {
 	@Test
 	public void saveUser() {
 		User user = new User();
-		user.setUserName("liuminglu");
+		user.setUsername("liuminglu");
 		user.setPassword("000000");
 		System.out.println(userService.insertUser(user));
 	}
 	
 	@Test
 	public void getUserByUserId() {
-		System.out.println(userService.getUserByUserId("1").getUserName());
+		System.out.println(userService.getUserByUserId("1").getUsername());
 	}
 	
 	@Test

@@ -9,10 +9,10 @@ public class UserAction extends BaseAction<UserDto> {
 	
 	public String login() {
 		User user = model.getUser();
-		System.out.println(user.getUserName());
+		System.out.println(user.getUsername());
 		System.out.println(user.getPassword());
 		System.out.println(model.getModelId());
-		model.setUserName(user.getUserName());
+		model.setUserName(user.getUsername());
 		return "toWelcome";
 	}
 

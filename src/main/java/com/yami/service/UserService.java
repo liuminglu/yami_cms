@@ -8,5 +8,5 @@ public interface UserService {
 	
 	User getUserByUserId(String userId);
 	
-	int insertUser(User user);
+	long insertUser(User user);
 }
