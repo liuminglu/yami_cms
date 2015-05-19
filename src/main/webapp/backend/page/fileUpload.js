@@ -5,16 +5,14 @@ var uploadModule = {
 
     getUploadToken: function() {
         jQuery.ajax({
-            url: '../../../s/api/qiniu/token',
+            url: '/thirdparty.getQiniuToken.do',
             type: "get",
             success: function(msg) {
-                uploadModule.token = msg.obj;
+                uploadModule.token = msg.uptoken;
                 uploadModule.hasUploadToken = true;
             },
             error: function(XMLHttpRequest, textStatus, errorThrown) {
-                //alert(XMLHttpRequest.status);
-                //alert(XMLHttpRequest.readyState);
-               // alert(textStatus);
+
             },
             complete: function(XMLHttpRequest, textStatus) {
                 this; // 调用本次AJAX请求时传递的options参数
@@ -23,19 +21,15 @@ var uploadModule = {
     },
 
     uploadFile: function(file, callback, key) {
-        if(!uploadModule.token) return;
-
+        if(!uploadModule.token){
+            return;
+        }
         var formData = new FormData();
         formData.append('token', uploadModule.token);
         formData.append('file', file);
         if (typeof key !== 'undefined') {
             formData.append('key', key);
         }
-        //formData.token=uploadModule.token;
-        //formData.file=file;
-        //if (typeof key !== 'undefined') {
-        //    formData.key=key;
-        //}
 
         jQuery.ajax({
             url: 'http://upload.qiniu.com',
@@ -47,12 +41,11 @@ var uploadModule = {
              */
             contentType : false,
             success: function(responseText) {
-                callback('http://childhood.qiniudn.com/' + responseText.key);
+                callback('http://hackcoder.qiniudn.com/' + responseText.key);
             },
             error: function(XMLHttpRequest, textStatus, errorThrown) {
                 //alert(XMLHttpRequest.status);
                 //alert(XMLHttpRequest.readyState);
-                alert('上传文章失败');
             }
         });
     },

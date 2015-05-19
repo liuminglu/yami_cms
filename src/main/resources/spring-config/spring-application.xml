@@ -92,10 +92,19 @@
 	</aop:config>
 
 	<!-- 逻辑处理AOP -->
-	<!-- <bean id="insertAspect" class="com.yami.aop.InertAspect" /> <aop:config> 
+	<!-- <bean id="insertAspect" class="com.yami.aop.InsertAspect" /> <aop:config>
 		<aop:aspect ref="insertAspect"> 配置pointcut,即切入点，对哪些类的哪些方法起到AOP的作用 <aop:pointcut 
 		id="insertPointCut" expression="execution(* com.yami.service.impl.*.insert*(..))"/> 
 		配置advice,即Aspect类中的logging()方法，这里采用在业务方法执行前进行拦截 <aop:before method="beforeInsert" 
 		pointcut-ref="insertPointCut" /> </aop:aspect> </aop:config> -->
-
+	<bean id="configProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="locations">
+			<list>
+				<value>classpath*:config.properties</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer">
+		<property name="properties" ref="configProperties" />
+	</bean>
 </beans>

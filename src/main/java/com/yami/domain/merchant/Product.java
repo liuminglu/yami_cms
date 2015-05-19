@@ -23,6 +23,7 @@ public class Product implements Serializable {
     private Boolean available = true;
     private Boolean isDelete = false;
     private Boolean main = false;
+    private Integer verifyStatus;
 
     public Long getId() {
         return id;
@@ -150,5 +151,13 @@ public class Product implements Serializable {
 
     public void setMain(Boolean main) {
         this.main = main;
+    }
+
+    public Integer getVerifyStatus() {
+        return verifyStatus;
+    }
+
+    public void setVerifyStatus(Integer verifyStatus) {
+        this.verifyStatus = verifyStatus;
     }
 }

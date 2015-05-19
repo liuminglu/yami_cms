@@ -4,7 +4,7 @@ import org.aspectj.lang.JoinPoint;
 
 import com.yami.util.DomainUtil;
 
-public class InertAspect {
+public class InsertAspect {
 	
 	/**
 	 * 执行insert之前为存储对象生成主键

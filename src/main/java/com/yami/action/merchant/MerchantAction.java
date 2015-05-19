@@ -26,8 +26,8 @@ public class MerchantAction extends BaseAction<MerchantDto> {
     private MerchantService merchantService;
 
     public String unCheckedMerchants(){
-        List<Merchant> merchants = merchantService.getMerchantByVerifyStatus(0, (model.getPage()-1)*model.getRows(), model.getRows());
-        long amount =  merchantService.countMerchantByVerifyStatus(0);
+        List<Merchant> merchants = merchantService.getMerchantsByVerifyStatus(0, (model.getPage()-1)*model.getRows(), model.getRows());
+        long amount =  merchantService.countMerchantsByVerifyStatus(0);
         results = new PageResult<Merchant>(merchants,amount);
         return SUCCESS;
     }

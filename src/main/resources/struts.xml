@@ -7,6 +7,5 @@
 	</package>
 	
 	<!--引入其他的struts2的配置文件-->  
-    <include file="struts-config/struts-user.xml"/>
-    <include file="struts-config/struts-merchant.xml"/>
+    <include file="struts-config/struts-*.xml"/>
 </struts>
