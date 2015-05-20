@@ -19,15 +19,28 @@
 		UPDATE Product set verifyStatus =  2 where id = #{0}
 	</update>
 
-	<update id="updateBaseInformation" parameterType="Product">
+	<update id="saveAndPass" parameterType="Product">
 		UPDATE Product
 		set
-		name = #{name},
-		price = #{price},
-		summary = #{summary},
-		pictures=#{pictures},
-		tags = #{tags},
-		supplyPerDay = #{supplyPerDay}
+		<if test="name != null">
+			name = #{name},
+		</if>
+		<if test="price != null">
+			price = #{price},
+		</if>
+		<if test="summary != null">
+			summary = #{summary},
+		</if>
+		<if test="pictures != null">
+			pictures=#{pictures},
+		</if>
+		<if test="tags != null">
+			tags = #{tags},
+		</if>
+		<if test="supplyPerDay != null">
+			supplyPerDay = #{supplyPerDay},
+		</if>
+		verifyStatus = 0
 		where id = #{id}
 	</update>
 </mapper>

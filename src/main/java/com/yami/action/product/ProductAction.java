@@ -43,8 +43,7 @@ public class ProductAction extends BaseAction<ProductDto> {
     public String saveAndPass() throws InvocationTargetException, IllegalAccessException {
         Product product = new Product();
         BeanUtils.copyProperties(product,model);
-        productService.updateBaseInformation(product);//更新基本信息
-       // productService.passProduct(model.getId());//审核通过
+        productService.saveAndPass(product);
         return SUCCESS;
     }
     public String pass(){

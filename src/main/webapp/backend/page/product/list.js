@@ -1,7 +1,7 @@
 function pass() {
     var row = $('#productGrid').datagrid('getSelected');
     if(row){
-        var url = '/product.pass.do';
+        var url = '../../product.pass.do';
         $.ajax({
             url: url,
             data:{"id":row.id},
@@ -18,7 +18,7 @@ function pass() {
 function reject() {
     var row = $('#productGrid').datagrid('getSelected');
     if(row){
-        var url = '/product.reject.do';
+        var url = '../../product.reject.do';
         $.ajax({
             url: url,
             data:{"id":row.id},
@@ -33,9 +33,9 @@ function reject() {
 
 }
 
-function saveProduct(){
+function saveAndPass(){
     $('#product_form').form('submit',{
-        url: "/product.saveAndPass.do",
+        url: "../../product.saveAndPass.do",
 
         onSubmit: function(){
             return $(this).form('validate');

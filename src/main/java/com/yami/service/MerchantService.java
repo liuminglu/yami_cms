@@ -9,4 +9,5 @@ public interface MerchantService {
 	public long countMerchantsByVerifyStatus(int status);
 	public void passMerchant(long id);
 	public void rejectMerchant(long id);
+	public void saveAndPass(Merchant merchant);
 }

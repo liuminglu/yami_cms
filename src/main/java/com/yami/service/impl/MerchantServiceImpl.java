@@ -29,4 +29,9 @@ public class MerchantServiceImpl implements MerchantService {
 	public void rejectMerchant(long id) {
 		merchantMapper.rejectMerchant(id);
 	}
+
+	@Override
+	public void saveAndPass(Merchant merchant) {
+		merchantMapper.saveAndPass(merchant);
+	}
 }

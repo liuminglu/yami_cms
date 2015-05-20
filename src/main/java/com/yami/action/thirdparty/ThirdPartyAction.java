@@ -32,7 +32,7 @@ public class ThirdPartyAction extends ActionSupport {
 
     public String getQiniuToken() throws Exception{
         Mac mac = new Mac(accessKey, secretKey);
-        PutPolicy putPolicy = new PutPolicy("hackcoder");
+        PutPolicy putPolicy = new PutPolicy("yamichu");
         results.put("uptoken", putPolicy.token(mac));
         return SUCCESS;
     }

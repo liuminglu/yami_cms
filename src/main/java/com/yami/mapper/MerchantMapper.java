@@ -9,4 +9,5 @@ public interface MerchantMapper {
 	public long countMerchantsByVerifyStatus(int verifyStatus);
 	public void passMerchant(long id);
 	public void rejectMerchant(long id);
+	public void saveAndPass(Merchant merchant);
 }

@@ -9,5 +9,5 @@ public interface ProductMapper {
     public long countProductsByVerifyStatus(int verifyStatus);
     public void passProduct(long id);
     public void rejectProduct(long id);
-    public void updateBaseInformation(Product product);
+    public void saveAndPass(Product product);
 }

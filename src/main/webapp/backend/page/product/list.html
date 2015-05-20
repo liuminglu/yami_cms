@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="../../lib/themes/default/easyui.css">
     <link rel="stylesheet" type="text/css" href="../../lib/themes/icon.css">
-    <link rel="stylesheet" type="text/css" href="/backend/backres/css/main.css">
+    <link rel="stylesheet" type="text/css" href="../../backres/css/main.css">
     <script type="text/javascript" src="../../lib/jquery.min.js"></script>
     <script type="text/javascript" src="../../lib/jquery.easyui.min.js"></script>
 
@@ -14,7 +14,7 @@
 </head>
 <body>
 <table id="productGrid" title="菜品审核" class="easyui-datagrid" style="1000px;800px"
-       url="/product.unCheckedProducts.do"
+       url="../../product.unCheckedProducts.do"
        toolbar="#toolbar"
        method='POST'
        page="1"
@@ -51,14 +51,14 @@
         </div>
         <div class="fitem">
             <label>价格:</label>
-            <input name="price" style="width:400px" class="easyui-numberbox" invalidMessage="价格为整数" required="true">
+            <input name="price" precision="0" style="width:400px" class="easyui-numberbox" invalidMessage="价格为整数" required="true">
         </div>
         <div class="fitem">
             <label>标签:</label>
             <input name="tags" style="width:400px" class="easyui-validatebox" >
         </div>
         <div class="fitem">
-            <label>图片:</label>
+            <label>美食图片:</label>
             <input id="pictures" name="pictures" type="hidden" style="width:400px" class="easyui-validatebox" required="true">
             <div id="container">
             </div>
@@ -77,7 +77,7 @@
     </form>
 </div>
 <div id="dlg-buttons">
-    <a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="saveProduct()">审核通过</a>
+    <a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="saveAndPass()">审核通过</a>
     <a href="#" class="easyui-linkbutton" iconCls="icon-cancel" onclick="cancel()">取消</a>
 </div>
 <div id="dlg-success" closed="true" class="easyui-dialog" title="Basic Dialog" data-options="iconCls:'icon-ok'" style="width:300px;height:100px;padding:10px">

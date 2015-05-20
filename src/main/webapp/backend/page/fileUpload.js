@@ -5,7 +5,7 @@ var uploadModule = {
 
     getUploadToken: function() {
         jQuery.ajax({
-            url: '/thirdparty.getQiniuToken.do',
+            url: '../../../thirdparty.getQiniuToken.do',
             type: "get",
             success: function(msg) {
                 uploadModule.token = msg.uptoken;
@@ -41,7 +41,7 @@ var uploadModule = {
              */
             contentType : false,
             success: function(responseText) {
-                callback('http://hackcoder.qiniudn.com/' + responseText.key);
+                callback('http://7xizzx.com2.z0.glb.qiniucdn.com/' + responseText.key);
             },
             error: function(XMLHttpRequest, textStatus, errorThrown) {
                 //alert(XMLHttpRequest.status);

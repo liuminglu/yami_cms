@@ -32,7 +32,7 @@ public class ProductServiceImpl implements ProductService {
 		productMapper.rejectProduct(id);
 	}
 
-	public void updateBaseInformation(Product product) {
-		productMapper.updateBaseInformation(product);
+	public void saveAndPass(Product product) {
+		productMapper.saveAndPass(product);
 	}
 }

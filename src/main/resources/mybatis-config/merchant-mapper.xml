@@ -15,5 +15,53 @@
 	<update id="rejectMerchant" parameterType="long">
 		UPDATE Merchant set verifyStatus =  2 where id = #{0}
 	</update>
+	<update id="saveAndPass" parameterType="Merchant">
+		UPDATE Merchant
+		set
+		<if test="name != null">
+			name = #{name},
+		</if>
+		<if test="address != null">
+			address = #{address},
+		</if>
+		<if test="phone != null">
+			phone = #{phone},
+		</if>
+		<if test="pictures != null">
+			pictures = #{pictures},
+		</if>
+		<if test="messHall != null">
+			messHall = #{messHall},
+		</if>
+		<if test="countOfMessHall != null">
+			countOfMessHall = #{countOfMessHall},
+		</if>
+		<if test="selfPickup != null">
+			selfPickup = #{selfPickup},
+		</if>
+		<if test="supportDelivery != null">
+			supportDelivery = #{supportDelivery},
+		</if>
+		<if test="comment != null">
+			comment = #{comment},
+		</if>
+		<if test="description != null">
+			description = #{description}
+		</if>,
+		<if test="tags != null">
+			tags = #{tags},
+		</if>
+		<if test="businessHours != null">
+			businessHours = #{businessHours},
+		</if>
+		<if test="goodCuisine != null">
+			goodCuisine = #{goodCuisine},
+		</if>
+		<if test="businessDayPerWeek != null">
+			businessDayPerWeek = #{businessDayPerWeek},
+		</if>
+		verifyStatus = 0
+		where id = #{id}
+	</update>
 </mapper>
 
