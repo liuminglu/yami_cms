@@ -9,6 +9,12 @@
     "attributes":{
       "url":"page/merchant/list.html"
     }
+  },{
+    "id": 12,
+    "text": "菜品审核",
+    "attributes":{
+      "url":"page/product/list.html"
+    }
   }]
 }
 ]

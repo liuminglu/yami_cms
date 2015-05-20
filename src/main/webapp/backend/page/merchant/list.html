@@ -31,10 +31,11 @@
     </thead>
 </table>
 <div id="toolbar">
-    <a href="#" class="easyui-linkbutton" iconCls="icon-ok" plain="true" onclick="passMerchant()"> 审核通过</a>
-    <a href="#" class="easyui-linkbutton" iconCls="icon-no" plain="true" onclick="rejectMerchant()">审核拒接</a>
+    <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="edit()">编辑</a>
+    <a href="#" class="easyui-linkbutton" iconCls="icon-ok" plain="true" onclick="pass()"> 审核通过</a>
+    <a href="#" class="easyui-linkbutton" iconCls="icon-no" plain="true" onclick="reject()">审核拒绝</a>
 </div>
-<div id="dlg" closed="true" class="easyui-dialog" title="Basic Dialog" data-options="iconCls:'icon-ok'" style="width:400px;height:200px;padding:10px">
+<div id="dlg-success" closed="true" class="easyui-dialog" title="Basic Dialog" data-options="iconCls:'icon-ok'" style="width:300px;height:200px;padding:10px">
     操作成功！
 </div>
 <script type="text/javascript" src="list.js"></script>

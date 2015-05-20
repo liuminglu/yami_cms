@@ -14,11 +14,11 @@ public class MerchantServiceImpl implements MerchantService {
 	@Autowired
 	private MerchantMapper merchantMapper;
 
-	public List<Merchant> getMerchantByVerifyStatus(int status, int page, int size) {
+	public List<Merchant> getMerchantsByVerifyStatus(int status, int page, int size) {
 		return merchantMapper.getMerchantsByVerifyStatus(status,page,size);
 	}
 
-	public long countMerchantByVerifyStatus(int status) {
+	public long countMerchantsByVerifyStatus(int status) {
 		return merchantMapper.countMerchantsByVerifyStatus(status);
 	}
 
