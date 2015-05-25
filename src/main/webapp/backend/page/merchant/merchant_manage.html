@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../../lib/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../lib/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="../../backres/css/main.css">
+    <script type="text/javascript" src="../../lib/jquery.min.js"></script>
+    <script type="text/javascript" src="../../lib/jquery.easyui.min.js"></script>
+
+    <script type="text/javascript" src="../../index.js"></script>
+
+    <title>商户列表</title>
+</head>
+<body>
+<table id="merchantGrid" title="商户审核" class="easyui-datagrid" style="1000px;800px"
+       url="../../../merchant.getMerchants.do"
+       toolbar="#toolbar"
+       method='POST'
+       page="1"
+       pageSize="20"
+       rownumbers="true" fitColumns="true" singleSelect="true" pagination="true">
+    <thead>
+    <tr>
+        <th field="id" width="50">ID</th>
+        <th field="name" width="100">商户名</th>
+        <th field="address" width="100">地址</th>
+        <th field="description" width="100">描述</th>
+        <th field="tags" width="100">标签</th>
+        <th field="goodCuisine" width="100">拿手菜系</th>
+        <th field="isAutoOpen" width="100">是否允许自由开店</th>
+        <th field="isRest" width="100">是否休店</th>
+        <th field="verifyStatus" width="100">审核状态</th>
+        <th field="createDate" width="100">创建时间</th>
+    </tr>
+    </thead>
+</table>
+<div id="toolbar">
+    <table>
+        <tr>
+            <td>开始日期：</td>
+            <td><input id="createFrom" name="createFrom" class="f1 easyui-datebox" editable=false/></td>
+            <td>结束日期：</td>
+            <td><input id="createTo" name="createTo" class="f1 easyui-datebox" editable=false/></td>
+            <td>审核状态：</td>
+            <td><input id="verifyStatus" name="verifyStatus" class=" easyui-combobox" value="-1" ,editable=false url="../../conf/verifyStatus.json" valueField="id",textField="text"/></td>
+            <td>ID：</td>
+            <td><input id="id" name="id" class="f1 easyui-numberbox"/></td>
+            <td><a href="#" class="easyui-linkbutton"  plain="true" iconCls="icon-search" onclick="query()">查询</a>  </td>
+        </tr>
+        <tr>
+            <td><a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="edit()">编辑</a></td>
+        </tr>
+    </table>
+
+</div>
+
+<div id="dlg" class="easyui-dialog" style="width:600px;height:300px;padding:10px 20px" resizable="true"
+     maximizable="true"
+     closed="true" buttons="#dlg-buttons" title="编辑商户信息">
+    <form id="merchant_form" method="post">
+        <div class="fitem">
+            <label>ID:</label>
+            <input name="id" style="width:400px" class="easyui-textbox" editable="false">
+        </div>
+        <div class="fitem">
+            <label>商户名:</label>
+            <input name="name" style="width:400px" class="easyui-validatebox" required="true">
+        </div>
+        <div class="fitem">
+            <label>地址:</label>
+            <input name="address" style="width:400px" class="easyui-validatebox">
+        </div>
+        <div class="fitem">
+            <label>手机号:</label>
+            <input name="phone" validType="phone" style="width:400px" class="easyui-validatebox">
+        </div>
+        <div class="fitem">
+            <label>厨房图片:</label>
+            <input id="pictures" name="pictures" type="hidden" style="width:400px" class="easyui-validatebox"
+                   required="true">
+
+            <div id="container">
+            </div>
+            <input id="file" type="file">
+            <a href="#" class="easyui-linkbutton" iconCls="icon-save" onclick="ajaxFileUpload()">上传</a>
+        </div>
+        <div class="fitem">
+            <label>是否支持堂吃:</label>
+            <input name="messHall" value="true" type="radio">是
+            <input name="messHall" value="false" type="radio">否
+        </div>
+        <div class="fitem">
+            <label>堂吃人数:</label>
+            <input name="countOfMessHall" style="width:400px" class="easyui-numberbox">
+        </div>
+        <div class="fitem">
+            <label>是否支持自取:</label>
+            <input name="selfPickup" value="true" type="radio">是
+            <input name="selfPickup" value="false" type="radio">否
+        </div>
+        <div class="fitem">
+            <label>是否支持配送:</label>
+            <input name="supportDelivery" value="true" type="radio">是
+            <input name="supportDelivery" value="false" type="radio">否
+        </div>
+        <div class="fitem">
+            <label>试吃评价:</label>
+            <input name="comment" style="width:400px" class="easyui-validatebox" required="true">
+        </div>
+        <div class="fitem">
+            <label>描述:</label>
+            <input name="description" style="width:400px" class="easyui-validatebox" required="true">
+        </div>
+        <div class="fitem">
+            <label>标签:</label>
+            <input name="tags" style="width:400px" class="easyui-validatebox" required="true">
+        </div>
+        <div class="fitem">
+            <label>营业时间:</label>
+            <input name="businessHours" style="width:400px" class="easyui-validatebox" required="true">
+        </div>
+        <div class="fitem">
+            <label>拿手菜系:</label>
+            <input name="goodCuisine" style="width:400px" class="easyui-validatebox" required="true">
+        </div>
+        <div class="fitem">
+            <label>每周供应天数:</label>
+            <input name="businessDayPerWeek" style="width:400px" class="easyui-validatebox" required="true">
+        </div>
+    </form>
+</div>
+<div id="dlg-buttons">
+    <a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="update()">确定</a>
+    <a href="#" class="easyui-linkbutton" iconCls="icon-cancel" onclick="cancel()">取消</a>
+</div>
+<div id="dlg-success" closed="true" class="easyui-dialog" title="Basic Dialog" data-options="iconCls:'icon-ok'"
+     style="width:300px;height:200px;padding:10px">
+    操作成功！
+</div>
+<script type="text/javascript" src="../../backres/js/fileUpload.js"></script>
+<script type="text/javascript" src="../../backres/js/merchant/list.js"></script>
+</body>
+</html>

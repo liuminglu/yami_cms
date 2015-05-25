@@ -1,20 +1,50 @@
 [
   {
-  "id": 1,
-  "text": "审核管理",
-  "state": "closed",
-  "children": [{
-    "id": 11,
-    "text": "商户审核",
-    "attributes":{
-      "url":"page/merchant/list.html"
-    }
+    "id": 1,
+    "text": "审核管理",
+    "state": "closed",
+    "children": [
+      {
+        "id": 11,
+        "text": "商户审核",
+        "attributes": {
+          "url": "page/merchant/merchant_check.html"
+        }
+      },
+      {
+        "id": 12,
+        "text": "菜品审核",
+        "attributes": {
+          "url": "page/product/product_check.html"
+        }
+      },
+      {
+        "id": 13,
+        "text": "自由开店",
+        "attributes": {
+          "url": "page/merchant/merchant_auto_open_list.html"
+        }
+      }
+    ]
   },{
-    "id": 12,
-    "text": "菜品审核",
-    "attributes":{
-      "url":"page/product/list.html"
+  "id": 2,
+  "text": "信息管理",
+  "state": "closed",
+  "children": [
+    {
+      "id": 21,
+      "text": "商户信息",
+      "attributes": {
+        "url": "page/merchant/merchant_manage.html"
+      }
+    },
+    {
+      "id": 22,
+      "text": "菜品信息",
+      "attributes": {
+        "url": "page/product/product_manage.html"
+      }
     }
-  }]
+  ]
 }
 ]

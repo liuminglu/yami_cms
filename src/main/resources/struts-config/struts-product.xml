@@ -2,6 +2,14 @@
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
 	<package name="product" extends="json-default,struts-default" >
+		<global-results>
+			<result name="loginerror">/backend/login.html</result>
+		</global-results>
+		<global-exception-mappings>
+			<exception-mapping exception="com.yami.exception.NoPermissionException"
+							   result="loginerror"/>
+		</global-exception-mappings>
+
 		<action name="product.*" class="com.yami.action.product.ProductAction" method="{1}">
 			<result type="json">
 				<param name="root">

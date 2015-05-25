@@ -1,7 +1,17 @@
+function query(){
+    $('#productGrid').datagrid('load',{
+            "id":$('#id').numberbox('getValue'),
+            "verifyStatus":$('#verifyStatus').numberbox('getValue'),
+            "createFrom":$('#createFrom').datebox('getValue'),
+            "createTo":$('#createTo').datebox('getValue')
+        }
+    );
+}
+
 function pass() {
     var row = $('#productGrid').datagrid('getSelected');
     if(row){
-        var url = '/product.pass.do';
+        var url = '../../product.pass.do';
         $.ajax({
             url: url,
             data:{"id":row.id},
@@ -18,7 +28,7 @@ function pass() {
 function reject() {
     var row = $('#productGrid').datagrid('getSelected');
     if(row){
-        var url = '/product.reject.do';
+        var url = '../../product.reject.do';
         $.ajax({
             url: url,
             data:{"id":row.id},
@@ -33,9 +43,23 @@ function reject() {
 
 }
 
-function saveProduct(){
+function saveAndPass(){
     $('#product_form').form('submit',{
-        url: "/product.saveAndPass.do",
+        url: "../../product.saveAndPass.do",
+
+        onSubmit: function(){
+            return $(this).form('validate');
+        },
+        success: function(result){
+            $('#dlg').dialog('close');        // close the dialog
+            $('#productGrid').datagrid('reload');    // reload the user data
+        }
+    });
+}
+
+function update(){
+    $('#product_form').form('submit',{
+        url: "../../product.update.do",
 
         onSubmit: function(){
             return $(this).form('validate');

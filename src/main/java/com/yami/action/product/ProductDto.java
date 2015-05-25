@@ -2,6 +2,8 @@ package com.yami.action.product;
 
 import com.yami.action.BaseDto;
 
+import java.util.Date;
+
 /**
  * Created by hackcoder on 2015/5/11.
  */
@@ -15,6 +17,10 @@ public class ProductDto extends BaseDto{
     private Integer supplyPerDay;
     private Boolean main = false;
 
+    private Integer verifyStatus;
+    //前端查询条件
+    private Date createFrom;
+    private Date createTo;
 
     public String getName() {
         return name;
@@ -70,5 +76,29 @@ public class ProductDto extends BaseDto{
 
     public void setMain(Boolean main) {
         this.main = main;
+    }
+
+    public Integer getVerifyStatus() {
+        return verifyStatus;
+    }
+
+    public void setVerifyStatus(Integer verifyStatus) {
+        this.verifyStatus = verifyStatus;
+    }
+
+    public Date getCreateFrom() {
+        return createFrom;
+    }
+
+    public void setCreateFrom(Date createFrom) {
+        this.createFrom = createFrom;
+    }
+
+    public Date getCreateTo() {
+        return createTo;
+    }
+
+    public void setCreateTo(Date createTo) {
+        this.createTo = createTo;
     }
 }

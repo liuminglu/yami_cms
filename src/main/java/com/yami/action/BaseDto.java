@@ -6,40 +6,16 @@ import java.util.List;
 public class BaseDto implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private int id;
+	private long id;
 	private int page = 1;
 	private int rows = 20;
-	/**
-	 * 用户Id
-	 */
-	private String userId;
-	
-	/**
-	 * 用户名称
-	 */
-	private String userName;
-	
-	public String getUserId() {
-		return userId;
-	}
-	
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
+	private int from;
 
-	public String getUserName() {
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -59,4 +35,11 @@ public class BaseDto implements Serializable {
 		this.rows = rows;
 	}
 
+	public int getFrom() {
+		return (page-1)*rows;
+	}
+
+	public void setFrom(int from) {
+		this.from = from;
+	}
 }

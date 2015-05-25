@@ -4,6 +4,7 @@ import java.lang.reflect.ParameterizedType;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.ServletActionContext;
 
@@ -28,6 +29,8 @@ public class BaseAction<M> extends ActionSupport implements ModelDriven<M> {
 	 * response对象
 	 */
 	protected HttpServletResponse response = ServletActionContext.getResponse();
+
+	protected HttpSession session = request.getSession(false);
 
 	protected M model;
 

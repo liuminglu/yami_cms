@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="../../lib/themes/default/easyui.css">
     <link rel="stylesheet" type="text/css" href="../../lib/themes/icon.css">
-    <link rel="stylesheet" type="text/css" href="/backend/backres/css/main.css">
+    <link rel="stylesheet" type="text/css" href="../../backres/css/main.css">
     <script type="text/javascript" src="../../lib/jquery.min.js"></script>
     <script type="text/javascript" src="../../lib/jquery.easyui.min.js"></script>
 
@@ -14,7 +14,7 @@
 </head>
 <body>
 <table id="productGrid" title="菜品审核" class="easyui-datagrid" style="1000px;800px"
-       url="/product.unCheckedProducts.do"
+       url="../../../product.getProducts.do"
        toolbar="#toolbar"
        method='POST'
        page="1"
@@ -30,14 +30,30 @@
         <th field="supplyPerDay" width="70">supplyPerDay</th>
         <th field="tags" width="80">tags</th>
         <th field="main" width="40">main</th>
+        <th field="createDate" width="100">createDate</th>
     </tr>
     </thead>
 </table>
+
 <div id="toolbar">
-    <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="edit()">编辑</a>
-    <a href="#" class="easyui-linkbutton" iconCls="icon-ok" plain="true" onclick="pass()"> 审核通过</a>
-    <a href="#" class="easyui-linkbutton" iconCls="icon-no" plain="true" onclick="reject()">审核拒绝</a>
+    <table>
+        <tr>
+            <td>开始日期：</td>
+            <td><input id="createFrom" name="createFrom" class="f1 easyui-datebox" editable=false/></td>
+            <td>结束日期：</td>
+            <td><input id="createTo" name="createTo" class="f1 easyui-datebox" editable=false/></td>
+            <td>审核状态：</td>
+            <td><input id="verifyStatus" name="verifyStatus" class=" easyui-combobox" value="-1" ,editable=false url="../../conf/verifyStatus.json" valueField="id",textField="text"/></td>
+            <td>ID：</td>
+            <td><input id="id" name="id" class="f1 easyui-numberbox"/></td>
+            <td><a href="#" class="easyui-linkbutton"  plain="true" iconCls="icon-search" onclick="query()">查询</a>  </td>
+        </tr>
+        <tr>
+            <td><a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="edit()">编辑</a></td>
+        </tr>
+    </table>
 </div>
+
 <div id="dlg" class="easyui-dialog" style="width:600px;height:300px;padding:10px 20px" resizable="true" maximizable="true"
      closed="true" buttons="#dlg-buttons" title="编辑菜品信息">
     <form id="product_form"  method="post">
@@ -51,14 +67,14 @@
         </div>
         <div class="fitem">
             <label>价格:</label>
-            <input name="price" style="width:400px" class="easyui-numberbox" invalidMessage="价格为整数" required="true">
+            <input name="price" precision="0" style="width:400px" class="easyui-numberbox" invalidMessage="价格为整数" required="true">
         </div>
         <div class="fitem">
             <label>标签:</label>
             <input name="tags" style="width:400px" class="easyui-validatebox" >
         </div>
         <div class="fitem">
-            <label>图片:</label>
+            <label>美食图片:</label>
             <input id="pictures" name="pictures" type="hidden" style="width:400px" class="easyui-validatebox" required="true">
             <div id="container">
             </div>
@@ -76,14 +92,15 @@
 
     </form>
 </div>
+
 <div id="dlg-buttons">
-    <a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="saveProduct()">审核通过</a>
+    <a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="update()">确定</a>
     <a href="#" class="easyui-linkbutton" iconCls="icon-cancel" onclick="cancel()">取消</a>
 </div>
 <div id="dlg-success" closed="true" class="easyui-dialog" title="Basic Dialog" data-options="iconCls:'icon-ok'" style="width:300px;height:100px;padding:10px">
     操作成功！
 </div>
-<script type="text/javascript" src="../fileUpload.js"></script>
-<script type="text/javascript" src="list.js"></script>
+<script type="text/javascript" src="../../backres/js/fileUpload.js"></script>
+<script type="text/javascript" src="../../backres/js/product/list.js"></script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head lang="en">
     <meta charset="UTF-8">
@@ -6,10 +6,17 @@
     <link rel="stylesheet" type="text/css" href="lib/themes/icon.css">
     <script type="text/javascript" src="lib/jquery.min.js"></script>
     <script type="text/javascript" src="lib/jquery.easyui.min.js"></script>
-    <script type="text/javascript" src="index.js"></script>
     <title>丫米管理后台</title>
 </head>
 <body class="easyui-layout">
+<%
+    boolean isLogin = session.getAttribute("login")==null?false:true;
+    if(isLogin==false){
+        response.setStatus(HttpServletResponse.SC_MOVED_PERMANENTLY);
+        String newLocn = "login.jsp";
+        response.setHeader("Location",newLocn);
+    }
+%>
 <!-- 正上方panel -->
 <div region="north" style="height:20px;padding:10px;" href="page/top.html"></div>
 <!-- 正左边panel -->
@@ -35,7 +42,7 @@
 <div region="south" style="height:50px;" align="center">
     <label>
         作者：小不点<br/>
-        更新时间：2015-5-14
+        更新时间：2015-5-25
     </label>
 </div>
 
