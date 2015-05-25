@@ -1,5 +1,7 @@
 package com.yami.service.impl;
 
+import com.yami.domain.member.Manager;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
@@ -9,31 +11,38 @@ import com.yami.service.UserService;
 
 @Service("userService")
 public class UserServiceImpl implements UserService {
-
+	@Autowired
 	private UserMapper userMapper;
-	
+
+	public UserMapper getUserMapper() {
+		return userMapper;
+	}
+
 	public void setUserMapper(UserMapper userMapper) {
 		this.userMapper = userMapper;
 	}
-	
-	public Integer getUserCount() {
-		return userMapper.getUserCount();
+
+	@Override
+	public User getUserById(long id) {
+		return userMapper.getUserById(id);
 	}
 
-	public User getUserByUserId(String userId) {
-		Assert.notNull(userId, "userId can't be null");
-		return userMapper.getUserByUserId(userId);
+	@Override
+	public Manager getManagerByName(String username) {
+		return userMapper.getManagerByName(username);
 	}
-	
-	public long insertUser(User user) {
-		Assert.notNull(user, "param can't be null : user");
-		try {
-			userMapper.insertUser(user);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return user.getId();
+
+	@Override
+	public void updateUserType(long id, int type) {
+		userMapper.updateUserType(id,type);
 	}
+
+	@Override
+	public void registerManager(Manager manager) {
+		userMapper.registerManager(manager);
+	}
+
+
 
 
 }

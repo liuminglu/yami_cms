@@ -4,6 +4,7 @@
 	
 	<typeAliases>
 		<typeAlias type="com.yami.domain.User" alias="User" />
+		<typeAlias type="com.yami.domain.member.Manager" alias="Manager" />
 		<typeAlias type="com.yami.domain.merchant.Merchant" alias="Merchant" />
 		<typeAlias type="com.yami.domain.merchant.Product" alias="Product" />
 	</typeAliases>

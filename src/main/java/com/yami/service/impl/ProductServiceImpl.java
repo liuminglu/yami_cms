@@ -1,5 +1,6 @@
 package com.yami.service.impl;
 
+import com.yami.action.product.ProductDto;
 import com.yami.domain.merchant.Product;
 import com.yami.mapper.MerchantMapper;
 import com.yami.mapper.ProductMapper;
@@ -34,5 +35,20 @@ public class ProductServiceImpl implements ProductService {
 
 	public void saveAndPass(Product product) {
 		productMapper.saveAndPass(product);
+	}
+
+	@Override
+	public void update(Product product) {
+		productMapper.update(product);
+	}
+
+	@Override
+	public long countProducts(ProductDto productDto) {
+		return productMapper.countProducts(productDto);
+	}
+
+	@Override
+	public List<Product> getProducts(ProductDto productDto) {
+		return productMapper.getProducts(productDto);
 	}
 }

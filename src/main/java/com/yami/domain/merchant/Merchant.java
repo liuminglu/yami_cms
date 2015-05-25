@@ -41,6 +41,7 @@ public class Merchant implements Serializable {
     private String deliverComment;
     private Boolean isDelete = false;
     private Integer verifyStatus = 0;//0  Î´ÉóºË£¬1 ÉóºËÍ¨¹ý 2£¬ÉóºË¾Ü¾ø
+    private Boolean isAutoOpen;
 
     public Long getId() {
         return id;
@@ -312,5 +313,13 @@ public class Merchant implements Serializable {
 
     public void setVerifyStatus(Integer verifyStatus) {
         this.verifyStatus = verifyStatus;
+    }
+
+    public Boolean getIsAutoOpen() {
+        return isAutoOpen;
+    }
+
+    public void setIsAutoOpen(Boolean isAutoOpen) {
+        this.isAutoOpen = isAutoOpen;
     }
 }

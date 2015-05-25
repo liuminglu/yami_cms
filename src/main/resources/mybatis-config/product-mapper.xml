@@ -3,6 +3,16 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.yami.mapper.ProductMapper">
+
+	<sql id="lastModifiedDate">
+		lastModifiedDate = now()
+	</sql>
+
+
+	<select id="getProductById"  resultType="Product">
+		SELECT * FROM Product WHERE id = #{0}
+	</select>
+
 	<select id="getProductsByVerifyStatus"  resultType="Product">
 		SELECT * FROM Product WHERE verifyStatus = #{0} limit #{1},#{2}
 	</select>
@@ -12,11 +22,15 @@
 	</select>
 
 	<update id="passProduct" parameterType="long">
-		UPDATE Product set verifyStatus =  1 where id = #{0}
+		UPDATE Product set verifyStatus =  1,
+		<include refid="lastModifiedDate"></include>
+		where id = #{0}
 	</update>
 
 	<update id="rejectProduct" parameterType="long">
-		UPDATE Product set verifyStatus =  2 where id = #{0}
+		UPDATE Product set verifyStatus =  2 ,
+		<include refid="lastModifiedDate"></include>
+		where id = #{0}
 	</update>
 
 	<update id="saveAndPass" parameterType="Product">
@@ -39,9 +53,63 @@
 		</if>
 		<if test="supplyPerDay != null">
 			supplyPerDay = #{supplyPerDay},
+			restCount = #{supplyPerDay},
+			twRestCount = #{supplyPerDay},
 		</if>
-		verifyStatus = 0
+		verifyStatus = 1,
+		<include refid="lastModifiedDate"></include>
 		where id = #{id}
 	</update>
+
+	<update id="update" parameterType="Product">
+		UPDATE Product
+		set
+		<if test="name != null">
+			name = #{name},
+		</if>
+		<if test="price != null">
+			price = #{price},
+		</if>
+		<if test="summary != null">
+			summary = #{summary},
+		</if>
+		<if test="pictures != null">
+			pictures=#{pictures},
+		</if>
+		<if test="tags != null">
+			tags = #{tags},
+		</if>
+		<if test="supplyPerDay != null">
+			supplyPerDay = #{supplyPerDay},
+			restCount = #{supplyPerDay},
+			twRestCount = #{supplyPerDay},
+		</if>
+		<include refid="lastModifiedDate"></include>
+		where id = #{id}
+	</update>
+
+	<select id="getProducts" parameterType="com.yami.action.product.ProductDto" resultType="Product">
+		SELECT *
+		FROM Product
+		WHERE
+		1=1
+		<if test="id !=0">and id = #{id}</if>
+		<if test="createFrom !=null">and <![CDATA[createDate >= #{createFrom}]]></if>
+		<if test="createTo !=null">and <![CDATA[createDate <= #{createTo}]]></if>
+		<if test="verifyStatus !=null and verifyStatus!= -1">and verifyStatus = #{verifyStatus}</if>
+		limit #{from},#{rows}
+	</select>
+
+	<select id="countProducts" parameterType="com.yami.action.product.ProductDto" resultType="long">
+		SELECT count(*)
+		FROM Product
+		WHERE
+		1=1
+		<if test="id !=0">and id = #{id}</if>
+		<if test="createFrom !=null">and <![CDATA[createDate >= #{createFrom}]]></if>
+		<if test="createTo !=null">and <![CDATA[createDate <= #{createTo}]]></if>
+		<if test="verifyStatus !=null  and verifyStatus!= -1">and verifyStatus = #{verifyStatus}</if>
+	</select>
+
 </mapper>
 

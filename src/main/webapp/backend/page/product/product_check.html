@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../../lib/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../lib/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="../../backres/css/main.css">
+    <script type="text/javascript" src="../../lib/jquery.min.js"></script>
+    <script type="text/javascript" src="../../lib/jquery.easyui.min.js"></script>
+
+    <script type="text/javascript" src="../../index.js"></script>
+
+    <title>菜品列表</title>
+</head>
+<body>
+<table id="productGrid" title="菜品审核" class="easyui-datagrid" style="1000px;800px"
+       url="../../../product.unCheckedProducts.do"
+       toolbar="#toolbar"
+       method='POST'
+       page="1"
+       pageSize="20"
+       rownumbers="true" fitColumns="true" singleSelect="true"  pagination="true">
+    <thead>
+    <tr>
+        <th field="id" width="50">ID</th>
+        <th field="name" width="100">菜名</th>
+        <th field="price" width="40">价格</th>
+        <th field="pictures" width="200">图片</th>
+        <th field="summary" width="100">总结</th>
+        <th field="supplyPerDay" width="70">每日供应</th>
+        <th field="tags" width="80">标签</th>
+        <th field="main" width="40">是否招牌菜</th>
+        <th field="createDate" width="100">创建时间</th>
+    </tr>
+    </thead>
+</table>
+<div id="toolbar">
+    <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="edit()">编辑</a>
+    <a href="#" class="easyui-linkbutton" iconCls="icon-ok" plain="true" onclick="pass()"> 审核通过</a>
+    <a href="#" class="easyui-linkbutton" iconCls="icon-no" plain="true" onclick="reject()">审核拒绝</a>
+</div>
+<div id="dlg" class="easyui-dialog" style="width:600px;height:300px;padding:10px 20px" resizable="true" maximizable="true"
+     closed="true" buttons="#dlg-buttons" title="编辑菜品信息">
+    <form id="product_form"  method="post">
+        <div class="fitem">
+            <label>ID:</label>
+            <input name="id" style="width:400px" class="easyui-textbox" editable="false">
+        </div>
+        <div class="fitem">
+            <label>菜名:</label>
+            <input name="name" style="width:400px" class="easyui-validatebox" required="true">
+        </div>
+        <div class="fitem">
+            <label>价格:</label>
+            <input name="price" precision="0" style="width:400px" class="easyui-numberbox" invalidMessage="价格为整数" required="true">
+        </div>
+        <div class="fitem">
+            <label>标签:</label>
+            <input name="tags" style="width:400px" class="easyui-validatebox" >
+        </div>
+        <div class="fitem">
+            <label>美食图片:</label>
+            <input id="pictures" name="pictures" type="hidden" style="width:400px" class="easyui-validatebox" required="true">
+            <div id="container">
+            </div>
+            <input id="file" type="file">
+            <a href="#" class="easyui-linkbutton" iconCls="icon-save"  onclick="ajaxFileUpload()">上传</a>
+        </div>
+        <div class="fitem">
+            <label>描述:</label>
+            <input name="summary" style="width:400px" class="easyui-validatebox" required="true">
+        </div>
+        <div class="fitem">
+            <label>每日供应份数:</label>
+            <input name="supplyPerDay" style="width:400px" class="easyui-numberbox" required="true">
+        </div>
+
+    </form>
+</div>
+<div id="dlg-buttons">
+    <a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="saveAndPass()">审核通过</a>
+    <a href="#" class="easyui-linkbutton" iconCls="icon-cancel" onclick="cancel()">取消</a>
+</div>
+<div id="dlg-success" closed="true" class="easyui-dialog" title="Basic Dialog" data-options="iconCls:'icon-ok'" style="width:300px;height:100px;padding:10px">
+    操作成功！
+</div>
+<script type="text/javascript" src="../../backres/js/fileUpload.js"></script>
+<script type="text/javascript" src="../../backres/js/product/list.js"></script>
+</body>
+</html>

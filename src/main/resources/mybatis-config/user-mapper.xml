@@ -3,26 +3,29 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.yami.mapper.UserMapper">
-	<resultMap type="User" id="userMap">
-		<id property="userId" column="id" />
-		<result property="userName" column="username" />
-		<result property="password" column="password" />
-		<result property="firstPay" column="firstPay" />
-	</resultMap>
-	
-	<insert id="insertUser" parameterType="User" useGeneratedKeys="true" keyProperty="userId">
-		insert into User
-			(username, password, firstPay)
-		values
-			(#{userName}, #{password}, #{firstPay})
-	</insert>
+	<select id="getUserById" parameterType="long" resultType="User">
+		SELECT * FROM User WHERE id = #{0}
+	</select>
 
-	<select id="getUserCount" resultType="Integer">
-		select count(*) from User
-	</select>
+	<update id="updateUserType">
+		UPDATE User SET type = #{1} WHERE id = #{0}
+	</update>
+
+
+	<insert id="registerManager" parameterType="Manager">
+		INSERT INTO Manager(username,password,createDate,lastVisitedDate)
+		VALUES (
+		#{username},
+		#{password},
+		now(),
+		now()
+		)
+	</insert>
 	
-	<select id="getUserByUserId" parameterType="String" resultMap="userMap">
-		select * from User where id = #{userId}
+	<select id="getManagerByName" parameterType="String" resultType="Manager">
+		SELECT * FROM Manager
+		where username = #{0}
 	</select>
+
 </mapper>
 
