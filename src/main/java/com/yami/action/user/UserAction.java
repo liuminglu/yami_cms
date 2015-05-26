@@ -1,5 +1,6 @@
 package com.yami.action.user;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.yami.action.BaseAction;
 import com.yami.annotation.ISLOGIN;
 import com.yami.annotation.UserAccessAnnotation;
@@ -9,6 +10,7 @@ import org.apache.commons.beanutils.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 
+import javax.servlet.http.HttpSession;
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;
@@ -45,8 +47,10 @@ public class UserAction extends BaseAction<UserDto> {
 		BeanUtils.copyProperties(manager, model);
 		Manager managerdb = userService.getManagerByName(manager.getUsername());
 		if(managerdb!=null&&managerdb.getPassword().equals((new Md5PasswordEncoder().encodePassword(manager.getPassword(),"yami")))){
-			session.setAttribute("login",true);
-			session.setAttribute("username",manager.getUsername());
+			ActionContext actionContext = ActionContext.getContext();
+			Map session = actionContext.getSession();
+			session.put("login",true);
+			session.put("username",manager.getUsername());
 			results.put("login",true);
 		}else{
 			results.put("login",false);
