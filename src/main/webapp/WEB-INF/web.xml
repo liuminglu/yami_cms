@@ -14,6 +14,7 @@
         <filter-name>struts2</filter-name>
         <url-pattern>*.do</url-pattern>
     </filter-mapping>
+
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>classpath:spring-config/spring-*.xml</param-value>

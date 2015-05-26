@@ -50,7 +50,7 @@ public class UserAction extends BaseAction<UserDto> {
 			results.put("login",true);
 		}else{
 			results.put("login",false);
-			session.invalidate();
+//			session.removeAttribute("login");
 		}
 		return SUCCESS;
 	}

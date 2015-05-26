@@ -20,7 +20,10 @@ public class PermissionAspect extends BaseAction<UserDto> {
             throws Exception {
 
         ISLOGIN isLogin = userAccessAnnotation.isLogin();
-        boolean login = session.getAttribute("login") == null ? false : true;
+        boolean login = false;
+        if(session!=null){
+            login = session.getAttribute("login")==null?false: (boolean) session.getAttribute("login");
+        }
         if (isLogin.equals(ISLOGIN.YES) && login == false) {
             throw new NoPermissionException("user_no_permission_error");
         }
