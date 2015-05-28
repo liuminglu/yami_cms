@@ -30,8 +30,6 @@ public class BaseAction<M> extends ActionSupport implements ModelDriven<M> {
 	 */
 	protected HttpServletResponse response = ServletActionContext.getResponse();
 
-	protected HttpSession session = request.getSession(false);
-
 	protected M model;
 
 	/**
