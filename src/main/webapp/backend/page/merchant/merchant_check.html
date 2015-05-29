@@ -8,8 +8,6 @@
     <script type="text/javascript" src="../../lib/jquery.min.js"></script>
     <script type="text/javascript" src="../../lib/jquery.easyui.min.js"></script>
 
-    <script type="text/javascript" src="../../index.js"></script>
-
     <title>商户列表</title>
 </head>
 <body>
@@ -75,6 +73,11 @@
             </div>
             <input id="file" type="file">
             <a href="#" class="easyui-linkbutton" iconCls="icon-save" onclick="ajaxFileUpload()">上传</a>
+        </div>
+        <div class="fitem">
+            <label>是否休店:</label>
+            <input name="isRest" value="true" type="radio">是
+            <input name="isRest" value="false" type="radio">否
         </div>
         <div class="fitem">
             <label>是否支持堂吃:</label>

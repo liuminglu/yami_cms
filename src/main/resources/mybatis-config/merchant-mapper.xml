@@ -41,6 +41,9 @@
         <if test="pictures != null">
             pictures = #{pictures},
         </if>
+        <if test="isRest != null">
+            isRest = #{isRest},
+        </if>
         <if test="messHall != null">
             messHall = #{messHall},
         </if>
@@ -71,7 +74,7 @@
         <if test="businessDayPerWeek != null">
             businessDayPerWeek = #{businessDayPerWeek},
         </if>
-        verifyStatus = 0,
+        verifyStatus = 1,
         <include refid="lastModifiedDate"></include>
         where id = #{id}
     </update>
@@ -90,6 +93,9 @@
         </if>
         <if test="pictures != null">
             pictures = #{pictures},
+        </if>
+        <if test="isRest != null">
+            isRest = #{isRest},
         </if>
         <if test="messHall != null">
             messHall = #{messHall},
