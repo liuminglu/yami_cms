@@ -25,12 +25,13 @@ public class MerchantDto extends BaseDto{
     private String goodCuisine;
     private String businessDayPerWeek;
     private Integer verifyStatus;
+    private Boolean isRest;
     //前端查询条件
     private Date createFrom;
     private Date createTo;
     private String ids;
-    private String isAutoOpens;
-    private String isRests;
+    private String isAutoOpens;//逗号分割数组
+    private String isRests;//逗号分割数组
 
     public String getName() {
         return name;
@@ -190,5 +191,13 @@ public class MerchantDto extends BaseDto{
 
     public void setIsRests(String isRests) {
         this.isRests = isRests;
+    }
+
+    public Boolean getIsRest() {
+        return isRest;
+    }
+
+    public void setIsRest(Boolean isRest) {
+        this.isRest = isRest;
     }
 }

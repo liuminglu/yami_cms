@@ -71,7 +71,8 @@ public class MerchantServiceImpl implements MerchantService {
 	}
 
 	private void updateUserType(Merchant merchant,USERTYPE type){
+		merchant = merchantMapper.getMerchantById(merchant.getId());
 		User user = userMapper.getUserById(merchant.getCreator());
-		userMapper.updateUserType(user.getId(),type.value());
+		if(user!=null)userMapper.updateUserType(user.getId(),type.value());
 	}
 }
